@@ -1,3 +1,6 @@
+import funcionalidades.*;
+
+import java.time.LocalDateTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -6,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         boolean sair = false;
         Scanner scanner = new Scanner(System.in);
-        int option=-1;
+        int option;
 
         while (!sair){
             mostraMenu();
@@ -26,31 +29,32 @@ public class Main {
             }
             switch (option){
                 case 1:
-                    //mostrar data e hora atual
+                    MostrarDataHoraAtual.mostrarDataHoraAtual();
                     break;
                 case 2:
-                    //formatar datas
+                    LocalDateTime now = LocalDateTime.now();
+                    FormatDatesAndTime.formataDatasEHoras(now);
                     break;
                 case 3:
-                    //calcular idade
+                    CalculaIdade.calculaIdade();
                     break;
                 case 4:
-                    //quanto tempo falta?
+                    QuantoTempoFalta.quantoTempoFalta();
                     break;
                 case 5:
-                    //diferença entre datas
+                    DiferencaEntreDatas.diferencaEntreDatas();
                     break;
                 case 6:
-                    //trabalhar com instant
+                    InstantAtual.trabalharComInstant();
                     break;
                 case 7:
-                    //somar/subtrair tempo
+                    SomarSubtrairTempo.escolheOpcao();
                     break;
                 case 8:
-                    //comparar datas
+                    ComparaDatas.comparaDatas();
                     break;
                 case 9:
-                    //calendário pessoal
+                    CalendarioPessoal.menu();
                     break;
                 case 0:
                     sair = true;
@@ -60,15 +64,16 @@ public class Main {
     }
     public static void mostraMenu(){
         System.out.println("----- Laboratório de Datas ------");
-        System.out.println("1 - Mostrar data e hora atual\n" +
-                "2 - Formatar datas\n" +
-                "3 - Calcular idade\n" +
-                "4 - Quanto tempo falta?\n" +
-                "5 - Diferença entre datas\n" +
-                "6 - Trabalhar com Instant\n" +
-                "7 - Somar/Subtrair tempo\n" +
-                "8 - Comparar datas\n" +
-                "9 - Calendário pessoal\n" +
-                "0 - Sair");
+        System.out.println("""
+                1 - Mostrar data e hora atual
+                2 - Formatar datas
+                3 - Calcular idade
+                4 - Quanto tempo falta?
+                5 - Diferença entre datas
+                6 - Trabalhar com Instant
+                7 - Somar/Subtrair tempo
+                8 - Comparar datas
+                9 - Calendário pessoal
+                0 - Sair""");
     }
 }
