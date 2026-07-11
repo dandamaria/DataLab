@@ -15,3 +15,26 @@
 
 ### Exercício para fixar e entender o uso das seguintes classes: 
 `LocalDate`, `LocalTime`, `LocalDateTime`, `Instant`, `Period`, `Duration`, `ChronoUnit`, `DateTimeFormatter`, `ZoneId`, `ZonedDateTime`
+
+### Observações Importantes
+> O objetivo desse projeto é relembrar o uso dessas classes em diferentes situações. Várias coisas poderiam ser simplificadas ou melhoradas e cabe uma boa refatoração nesse código. Vou deixar algumas coisas que observei e você pode resolver e abrir um **pull request** aqui.
+
+- Todas as classes tem um `Scanner`, ao invés disso poderia criar um classe "Input" e dentro dela esse obj. Assim, toda vez que fosse usar era só chamá-la:
+```
+public class Input {
+
+    public static final Scanner SCANNER =
+            new Scanner(System.in);
+
+}
+```
+Depois:
+```
+Input.SCANNER
+```
+
+- Só utilizei o tratamento de erro uma única vez dentro do Main, seria interessante tratar os outros inúmeros erros que podem ser gerados dentro de cada funcionalidade. É um bom exercício de Exceptions.
+- A funcionalidade 'QuantoTempoFalta' mostra valores negativos quando o evento inserido já aconteceu. 
+- Dentro de 'SomarSubtrairTempo' tem dois métodos que podem ser acessado livremente por outras classes (e não deveriam rs).
+
+> Se quiserem adicionar outras melhorias, sintam-se á vontade!
