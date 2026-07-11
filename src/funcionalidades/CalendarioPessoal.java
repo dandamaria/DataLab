@@ -1,8 +1,8 @@
 package funcionalidades;
 import funcionalidades.entites.Evento;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,11 +49,11 @@ public class CalendarioPessoal {
             System.out.println("Evento: "+e.getNome());
             LocalDate now = LocalDate.now();
             if(now.isBefore(e.getData())){
-                Period period = Period.between(now,e.getData());
-                System.out.println("Faltam "+period.getYears()+" anos "+period.getMonths()+" meses e "+ period.getDays()+" dias");
+                long days = ChronoUnit.DAYS.between(now,e.getData());
+                System.out.println("Faltam "+days+" dias");
             }else if(now.isAfter(e.getData())){
-                Period period = Period.between(now,e.getData());
-                System.out.println("Aconteceu há "+period.getYears()+" anos "+period.getMonths()+" meses e "+ period.getDays()+" dias");
+                long days = ChronoUnit.DAYS.between(e.getData(),now);
+                System.out.println("Aconteceu há "+days+" dias");
             } else if (now.isEqual(e.getData())) {
                 System.out.println("É hoje: "+e.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
